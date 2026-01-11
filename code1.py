@@ -1,0 +1,6 @@
+a=int(input('Choose a number:'))
+b=int(input('Choose another number:'))
+print(a+b)
+print(a-b)
+print(a*b)
+print(a/b)
