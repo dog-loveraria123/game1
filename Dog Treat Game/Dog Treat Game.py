@@ -5,16 +5,25 @@ HEIGHT=400
 dog=Actor('dog.png')
 treat=Actor('dog biscut.png')
 s=0
+go= False
 def draw():
     #putting Background image
     screen.blit('background.jpg',(0,0))
     dog.draw()
     treat.draw()
     screen.draw.text('Score:'+str(s),midtop=(300,20),fontsize=40)
+    if go==True:
+        screen.blit('gameover.jpg',(0,0))
+        screen.draw.text('Score:'+str(s),midtop=(300,20),fontsize=40)
+      
 def rt():
     treat.x=random.randint(10,550)
     treat.y=random.randint(10,390)
+def g():
+    global go
+    go= True
 def update():
+    global s 
     if keyboard.left:
         if dog.x>50:
            dog.x-=5
@@ -30,5 +39,7 @@ def update():
     #treat collection
     if dog.colliderect(treat):
         rt()
+        s=s+10
 rt()
+clock.schedule(g,30)
 pgzrun.go()
